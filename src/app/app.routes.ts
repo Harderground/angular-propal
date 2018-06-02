@@ -1,23 +1,10 @@
-import {Routes} from "@angular/router";
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule} from '@angular/router';
+import { DespachoComponent } from './components/despacho/despacho.component';
 
-import {StarterViewComponent} from "./views/appviews/starterview.component";
-import {LoginComponent} from "./views/appviews/login.component";
-
-import {BlankLayoutComponent} from "./components/common/layouts/blankLayout.component";
-import {BasicLayoutComponent} from "./components/common/layouts/basicLayout.component";
-import {TopNavigationLayoutComponent} from "./components/common/layouts/topNavigationlayout.component";
-
-import { DespachoComponent } from "app/components/despacho/despacho.component";
-
-
-export const ROUTES:Routes = [
-  // Main redirect
- 
-
-      { path: 'despacho', component: DespachoComponent },
-      { path: '', component: DespachoComponent },
-
-    
-  
-  
+const appRoutes: Routes =[
+    {path:'',component  : DespachoComponent},
+    {path:'despacho',component  : DespachoComponent}
 ];
+export const appRoutingProviders: any[] = [];
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

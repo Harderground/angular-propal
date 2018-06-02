@@ -1,18 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {RouterModule} from "@angular/router";
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
-
-import {ROUTES} from "./app.routes";
+import { RouterModule } from "@angular/router";
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { appRoutingProviders, routing } from './app.routes';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // App views
-import {AppviewsModule} from "./views/appviews/appviews.module";
+import { AppviewsModule } from "./views/appviews/appviews.module";
 
 // App modules/components
-import {LayoutsModule} from "./components/common/layouts/layouts.module";
+import { LayoutsModule } from "./components/common/layouts/layouts.module";
 
 import { DespachoComponent } from './components/despacho/despacho.component';
 
@@ -28,16 +28,16 @@ import { DespachoService } from 'app/services/despacho.service';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
-    HttpModule,
-    
+    HttpClientModule,
+    routing,
     LayoutsModule,
     AppviewsModule,
-    RouterModule.forRoot(ROUTES)
-   
+
   ],
   providers: [
-
+    appRoutingProviders,
     DespachoService
 
   ],

@@ -9,26 +9,38 @@ import {ROUTES} from "./app.routes";
 import { AppComponent } from './app.component';
 
 // App views
-import {DashboardsModule} from "./views/dashboards/dashboards.module";
 import {AppviewsModule} from "./views/appviews/appviews.module";
 
 // App modules/components
 import {LayoutsModule} from "./components/common/layouts/layouts.module";
 
+import { DespachoComponent } from './components/despacho/despacho.component';
+
+
+import { DespachoService } from 'app/services/despacho.service';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+    DespachoComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    DashboardsModule,
+    
     LayoutsModule,
     AppviewsModule,
     RouterModule.forRoot(ROUTES)
+   
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+
+    DespachoService
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

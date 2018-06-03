@@ -70,10 +70,10 @@ export class DespachoComponent implements OnInit {
   filtroCamion(a) {
     for (let i = 0; this.camionesFiltro.length; i++) {
       if (this.camionesFiltro[i].res_puerto == null) {
-        this.camionesFiltro[i].res_puerto = "";
+        this.camionesFiltro[i].res_puerto = " ";
       }
       if( this.camionesFiltro[i].res_puerto == undefined){
-        this.camionesFiltro[i].res_puerto = "";
+        this.camionesFiltro[i].res_puerto = " ";
       }
     }
     let filtro: any[] = this.camionesFiltro.filter(filter =>

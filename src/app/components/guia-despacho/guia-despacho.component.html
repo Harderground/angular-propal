@@ -1,0 +1,259 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <div class="row">
+            <div class="col-md-6">
+              <h2>
+                <strong>Despacho</strong>
+              </h2>
+            </div>
+            <div class="col-md-6">
+              <div class="pull-right" id="botonera">
+                <!-- ACA DEBERIA IR UN NGIF PARA CAMBIAR EL BOTON SI ES GUARDAR O ACTUALIZAR -->
+                <button id="bt_guardar" onclick="guardaoactualiza(event)" data-action="guardar" type="button" class="btn btn-success dim btn-sm">Guardar &nbsp;&nbsp;
+                  <i class="fa fa-floppy-o"></i>
+                </button>
+                <button type="button" class="btn btn-danger dim btn-sm" onclick="volveratras()">Volver &nbsp;&nbsp;
+                  <i class="fa fa-close"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content" style="padding-bottom: 10px;">
+          <div class="gray-bg wrapper wrapper-content animated fadeInRight" id="Abajo">
+            <div class="row">
+              <!-- ay -->
+              <div class="container">
+                <div class="stepwizard">
+                  <div class="stepwizard-row setup-panel">
+                    <div class="stepwizard-step col-xs-3">
+                      <a type="button" [class]="transporte" (click)="setMenu(1)">
+                        <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                      </a>
+                      <p>
+                        <small>Transporte</small>
+                      </p>
+                    </div>
+                    <div class="stepwizard-step col-xs-3">
+                      <a type="button" [class]="despacho" (click)="setMenu(2)">
+                        <i class="fa fa-truck" aria-hidden="true"></i>
+                      </a>
+                      <p>
+                        <small>Despacho</small>
+                      </p>
+                    </div>
+                    <div class="stepwizard-step col-xs-3">
+                      <a type="button" [class]="guia" (click)="setMenu(3)">
+                        <i class="fa fa-file" aria-hidden="true"></i>
+                      </a>
+                      <p>
+                        <small>Guia</small>
+                      </p>
+                    </div>
+                    <div class="stepwizard-step col-xs-3">
+                      <a type="button" [class]="despachar" (click)="setMenu(4)">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      </a>
+                      <p>
+                        <small>Despachar</small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <form role="form">
+                  <div *ngIf="id==1">
+                      <div class="ibox float-e-margins">
+                          <div class="ibox-title">
+                              <h5>Informacion</h5>
+                              <div class="ibox-tools">
+                                  <a class="collapse-link">
+                                      <i class="fa fa-chevron-up"></i>
+                                  </a>
+                              </div>
+                          </div>
+                          <div class="ibox-content">
+                              <div class="row">
+                                  <div class="col-sm-12">
+                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Correlativo</label>
+                                              <input value="" id="correlativo" class="form-control border-input" readonly style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Estado</label>
+                                              <select id="selectEstado" disabled="disabled" class="form-control border-input" style="height: 28px; font-size:12px;">
+                                                  <option value=""></option>
+                                              </select>
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
+                                          <div class="form-group" style="margin-bottom: 5px;" id="data_1">
+                                              <label>Fecha salida</label>
+                                              <div class="input-group date">
+                                                  <input class="form-control" id="fec_sal" value="" type="text"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="ibox float-e-margins">
+                          <div class="ibox-title">
+                              <h5>Transporte</h5>
+                              <div class="ibox-tools">
+                                  <a class="collapse-link">
+                                      <!-- <i class="fa fa-chevron-up"></i> -->
+                                  </a>
+                              </div>
+                          </div>
+                          
+                          <div class="ibox-content">
+                              <div class="row">
+                                  <div class="col-sm-12">
+                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Tipo transporte</label>
+                                              <select id="selectTipoTransporte" class="form-control border-input" style="height: 28px; font-size:12px;">
+                                                  <option value=""></option>
+                                              </select>
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Tipo vehiculo</label>
+                                              <select id="selectTipoVehiculo" class="form-control border-input" style="height: 28px; font-size:12px;">
+                                                  <option value=""></option>
+                                              </select>
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Patente camion</label>
+                                              <input value="" id="pantentecamion" readonly class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Patente carro</label>
+                                              <input value="" id="patente" class="form-control border-input" readonly style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
+                                          <div class="col-sm-10" style=" padding-left: 0px; ">
+                                              <div class="form-group" style="margin-bottom: 5px;">
+                                                  <label>Rut Chofer</label>
+                                                  <input value="" id="rutchofer" readonly class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-2" style=" padding-left: 0px; ">
+                                              <button type="button" onclick="CargaInformacionChofer()" id="modalpatent" href="#myModalchoferes" data-toggle="modal" data-target="#myModalchoferes" class="btn btn-info" style="bottom:0px;margin-top: 15px;"><i class="fa fa-search"></i></button>
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Nombre chofer</label>
+                                              <input value="" id="nombrechofer" class="form-control border-input" readonly style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
+                                          <div class="col-sm-10" style=" padding-left: 0px; ">
+                                              <div class="form-group" style="margin-bottom: 5px;">
+                                                  <label>Transporte</label>
+                                                  <input value="" id="ruttransporte" readonly class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-2" style=" padding-left: 0px; ">
+                                              <button type="button" onclick="CargaInformacionTransporte()" id="modalpatent2" href="#myModaltransporte" data-toggle="modal" data-target="#myModaltransporte" class="btn btn-info" style="bottom:0px;margin-top: 15px;"><i class="fa fa-search"></i></button>
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Nombre transporte</label>
+                                              <input id="nombretransportista" value="" class="form-control border-input" readonly style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Tara</label>
+                                              <input value="" id="tara" class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Termografo</label>
+                                              <input value="" id="termografo" class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Booking</label>
+                                              <input value="" id="booking" class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
+                                          <div class="form-group" style="margin-bottom: 5px;">
+                                              <label>Contenedor</label>
+                                              <input value="" id="contenedor" class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="panel panel-primary setup-content" *ngIf="id==2">
+                    Pene pal que lee
+                  </div>
+
+                  <div class="panel panel-primary setup-content" *ngIf="id==3">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Schedule</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <label class="control-label">Company Name</label>
+                        <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label">Company Address</label>
+                        <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
+                      </div>
+                      <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+                    </div>
+                  </div>
+
+                  <div class="panel panel-primary setup-content" *ngIf="id==4">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Cargo</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <label class="control-label">Company Name</label>
+                        <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label">Company Address</label>
+                        <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
+                      </div>
+                      <button class="btn btn-success pull-right" type="submit">Finish!</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- ay -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

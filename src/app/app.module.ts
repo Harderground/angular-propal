@@ -18,12 +18,15 @@ import { DespachoComponent } from './components/despacho/despacho.component';
 
 
 import { DespachoService } from 'app/services/despacho.service';
+import { GuiaDespachoComponent } from './components/guia-despacho/guia-despacho.component';
 
 @NgModule({
   declarations: [
     AppComponent,
 
     DespachoComponent,
+
+    GuiaDespachoComponent,
 
   ],
   imports: [

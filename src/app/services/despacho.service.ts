@@ -8,7 +8,7 @@ import { Headers } from '@angular/http'
 @Injectable()
 export class DespachoService {
 
-  private host:any="http://propalapp.dyndns.org/spdservices/";
+  private host: any = "http://propalapp.dyndns.org/spdservices/";
   private apiPorteria: string = 'api/Porteria/';
   private headerPost: any;
   private headerGet: any;
@@ -19,11 +19,17 @@ export class DespachoService {
   }
 
   getCamionesDespachar(): Observable<any> {
-    return this.httpClient.get(`${this.host}${this.apiPorteria}${apiMethod.camionesDespachar}`);
+    return this.httpClient.get(`${this.host}${this.apiPorteria}${apiMethod.camionesadespachar}`);
   }
-
+  getCamionesEnCarga(): Observable<any> {
+    return this.httpClient.get(`${this.host}${this.apiPorteria}${apiMethod.camionesandencarga}`);
+  }
+  getCamionesHistorico(): Observable<any> {
+    return this.httpClient.get(`${this.host}${this.apiPorteria}${apiMethod.camioneshistorico}`);
+  }
 }
 const apiMethod = {
-  camionesDespachar:"camionesadespachar"
+  camionesadespachar: "camionesadespachar",
+  camionesandencarga: "camionesandencarga",
+  camioneshistorico: "camioneshistorico"
 }
-

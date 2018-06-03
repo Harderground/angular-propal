@@ -5,11 +5,13 @@
                 <div class="ibox-title">
                     <div class="row">
                         <div class="col-md-6">
-                            <h2><strong>Gestion de Frigorifico</strong></h2>
+                            <h2>
+                                <strong>Gestion de Frigorifico</strong>
+                            </h2>
                         </div>
 
                         <div class="col-md-6">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -19,81 +21,160 @@
                             <div class="tabs-container">
 
                                 <ul class="nav nav-tabs">
-                                    <li [class]="despachar" (click)="setMenu(1)"   style="position:static"><a  data-toggle="tab" aria-expanded="true"> Por despachar<span class="badge  badge-warning" style="float:right; margin-top:-15px;margin-right:-20px;"></span></a></li>
-                                    <li [class]="anden" (click)="setMenu(2)"  ><a  data-toggle="tab"  aria-expanded="false"> Anden de carga<span class="badge badge-warning" style="float:right; margin-top:-15px;margin-right:-20px">16</span></a></li>
-                                    <li [class]="despachados" (click)="setMenu(3)"   style="position:static"><a  data-toggle="tab" aria-expanded="false"> Despachados<span id="contador3" class="badge badge-warning" style="float:right; margin-top:-15px;margin-right:-20px">16</span></a></li>
+                                    <li [class]="despachar" (click)="setMenu(1)" style="position:static">
+                                        <a data-toggle="tab" aria-expanded="true"> Por despachar
+                                            <span *ngIf="camiones.length > 0" class="badge badge-warning badge-menu">
+                                                ({{camiones.length}})
+                                            </span>
+                                            <span *ngIf="camiones.length == 0" id="" class="badge badge-warning badge-menu">
+                                                ( <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>)
+                                            </span>
+
+                                        </a>
+                                    </li>
+                                    <li [class]="anden" (click)="setMenu(2)">
+                                        <a data-toggle="tab" aria-expanded="false"> Anden de carga
+                                            <span *ngIf="camionesCargas.length > 0" class="badge badge-warning badge-menu">
+                                                ({{camionesCargas.length}})
+                                            </span>
+                                            <span *ngIf="camionesCargas.length == 0" id="" class="badge badge-warning badge-menu">
+                                                ( <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>)
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li [class]="despachados" (click)="setMenu(3)" style="position:static">
+                                        <a data-toggle="tab" aria-expanded="false"> Despachados
+                                                <span *ngIf="camionesHistoricos.length > 0" class="badge badge-warning badge-menu">
+                                                        ({{camionesHistoricos.length}})
+                                                </span>
+                                                <span *ngIf="camionesHistoricos.length == 0" id="" class="badge badge-warning badge-menu">
+                                                    ( <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>)
+                                                </span>                                        </a>
+                                    </li>
                                 </ul>
-                                <div  class="tab-content">
+                                <div class="tab-content">
                                     <div *ngIf="id==1" id="tab-1" class="tab-pane active">
                                         <div class="panel-body">
-                                            <table style="width:100%">
-                                                <tr>
-                                                  <th>TABh 1</th>
-                                                  <th>Lastnameasd</th> 
-                                                  <th>Age</th>
-                                                </tr>
-                                                <tr>
-                                                  <td>Jill</td>
-                                                  <td><input type="text" [(ngModel)]="texto"> {{texto}} </td> 
-                                                  <td>50</td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Eve</td>
-                                                  <td>Jackson</td> 
-                                                  <td>94</td>
-                                                </tr>
-                                              </table>
+                                            <table class="table table-striped" id="table-camion">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:7%">N° Re. Porteria</th>
+                                                        <th style="width:9%">Fecha</th>
+                                                        <th style="width:15%">Tipo vehiculo</th>
+                                                        <th style="width:7%">Patente</th>
+                                                        <th style="width:13%">Chofer</th>
+                                                        <th style="width:15%">Contenedor</th>
+                                                        <th style="width:12%">Booking</th>
+                                                        <th style="width:7%">Orden Carga</th>
+                                                        <th style="width:12%">Transportista</th>
+                                                        <th style="width:3%">Editar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbadi1">
+                                                    <tr *ngFor="let camion of camiones | paginate: { itemsPerPage: 10, currentPage: camion }">
+                                                        <td>{{camion.num_regPort}}</td>
+                                                        <td>{{camion.C_Fecha}}</td>
+                                                        <td>{{camion.nom_tipoVehiculo}}</td>
+                                                        <td>{{camion.patente}}</td>
+                                                        <td>{{camion.nom_chofer}}</td>
+                                                        <td>{{camion.nro_contenedor}}</td>
+                                                        <td>{{camion.res_puerto}}</td>
+                                                        <td class="text-center">{{camion.ord_carga_descarga}}</td>
+                                                        <td>{{camion.nom_agTransp}}</td>
+                                                        <td>
+                                                            <button routerLink="/guia-despacho" type="button" class="btn btn-primary btn-sm">
+                                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div *ngIf="camiones.length > 9 " class="text-center mt-3">
+                                                <pagination-controls previousLabel="" nextLabel="" (pageChange)="camion = $event"></pagination-controls>
+                                            </div>
                                         </div>
                                     </div>
                                     <div *ngIf="id==2" id="tab-1" class="tab-pane active">
                                         <div class="panel-body">
-                                            <table style="width:100%">
-                                                <tr>
-                                                  <th>TAB 2</th>
-                                                  <th>Lastnameasd</th> 
-                                                  <th>Age</th>
-                                                </tr>
-                                                <tr>
-                                                  <td>Jill</td>
-                                                  <td>Smith</td> 
-                                                  <td>50</td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Eve</td>
-                                                  <td>Jackson</td> 
-                                                  <td>94</td>
-                                                </tr>
-                                              </table>
+                                                <table class="table table-striped" id="table2">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width:7%">N° Despacho</th>
+                                                                <th style="width:7%">N° Guia</th>
+                                                                <th style="width:9%">Fecha</th>
+                                                                <th style="width:15%">Rut Exportador</th>
+                                                                <th style="width:7%">Patente</th>
+                                                                <th style="width:13%">Nombre Recibidor</th>
+                                                                <th style="width:15%">Contenedor</th>
+                                                                <th style="width:12%">Booking</th>
+                                                                <th style="width:7%">Orden Carga</th>
+                                                                <th style="width:12%">Transportista</th>
+                                                                <th style="width:3%">Editar</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbadi2">
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+    
                                         </div>
                                     </div>
                                     <div *ngIf="id==3" id="tab-1" class="tab-pane active">
                                         <div class="panel-body">
-                                            <table style="width:100%">
-                                                <tr>
-                                                  <th>TAB 3</th>
-                                                  <th>Lastnameasd</th> 
-                                                  <th>Age</th>
-                                                </tr>
-                                                <tr>
-                                                  <td>Jill</td>
-                                                  <td>Smith</td> 
-                                                  <td>50</td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Eve</td>
-                                                  <td>Jackson</td> 
-                                                  <td>94</td>
-                                                </tr>
-                                              </table>
+                                                <table class="table table-striped" id="table3">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width:7%">Inst. Carga</th>
+                                                                <th style="width:7%">N° Guia</th>
+                                                                <th style="width:9%">Fecha</th>
+                                                                <th style="width:15%">Naviera</th>
+                                                                <th style="width:13%">Nave</th>
+                                                                <th style="width:7%">Patente</th>
+                                                                <th style="width:15%">Contenedor</th>
+                                                                <th style="width:12%">Booking</th>
+                                                                <th style="width:7%">N° Despacho USDA</th>
+                                                                <th style="width:12%">Especie</th>
+                                                                <th style="width:3%">Editar</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbadi3">
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+    
                                         </div>
-                                    </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
+</div>

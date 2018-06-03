@@ -7,6 +7,7 @@ import { appRoutingProviders, routing } from './app.routes';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 // App views
 import { AppviewsModule } from "./views/appviews/appviews.module";
@@ -23,13 +24,11 @@ import { GuiaDespachoComponent } from './components/guia-despacho/guia-despacho.
 @NgModule({
   declarations: [
     AppComponent,
-
     DespachoComponent,
-
     GuiaDespachoComponent,
-
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,

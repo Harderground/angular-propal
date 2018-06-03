@@ -22,7 +22,7 @@
             </div>
           </div>
         </div>
-        <div class="ibox-content" style="padding-bottom: 10px;">
+        <div class="ibox-content">
           <div class="gray-bg wrapper wrapper-content animated fadeInRight" id="Abajo">
             <div class="row">
               <!-- ay -->
@@ -66,169 +66,507 @@
 
                 <form role="form">
                   <div *ngIf="id==1">
-                      <div class="ibox float-e-margins">
-                          <div class="ibox-title">
-                              <h5>Informacion</h5>
-                              <div class="ibox-tools">
-                                  <a class="collapse-link">
-                                      <i class="fa fa-chevron-up"></i>
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="ibox-content">
-                              <div class="row">
-                                  <div class="col-sm-12">
-                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Correlativo</label>
-                                              <input value="" id="correlativo" class="form-control border-input" readonly style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Estado</label>
-                                              <select id="selectEstado" disabled="disabled" class="form-control border-input" style="height: 28px; font-size:12px;">
-                                                  <option value=""></option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
-                                          <div class="form-group" style="margin-bottom: 5px;" id="data_1">
-                                              <label>Fecha salida</label>
-                                              <div class="input-group date">
-                                                  <input class="form-control" id="fec_sal" value="" type="text"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+                    <div class="ibox float-e-margins">
+                      <div class="ibox-title">
+                        <h5>Transporte</h5>
+                        <div class="ibox-tools">
+                          <a class="collapse-link">
+                            <!-- <i class="fa fa-chevron-up"></i> -->
+                          </a>
+                        </div>
                       </div>
-                      <div class="ibox float-e-margins">
-                          <div class="ibox-title">
-                              <h5>Transporte</h5>
-                              <div class="ibox-tools">
-                                  <a class="collapse-link">
-                                      <!-- <i class="fa fa-chevron-up"></i> -->
-                                  </a>
-                              </div>
+                      <div class="ibox-content">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label>Numero despacho</label>
+                              <input value="" id="correlativo" class="form-control border-input" readonly />
+                            </div>
                           </div>
-                          
-                          <div class="ibox-content">
-                              <div class="row">
-                                  <div class="col-sm-12">
-                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Tipo transporte</label>
-                                              <select id="selectTipoTransporte" class="form-control border-input" style="height: 28px; font-size:12px;">
-                                                  <option value=""></option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Tipo vehiculo</label>
-                                              <select id="selectTipoVehiculo" class="form-control border-input" style="height: 28px; font-size:12px;">
-                                                  <option value=""></option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Patente camion</label>
-                                              <input value="" id="pantentecamion" readonly class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Patente carro</label>
-                                              <input value="" id="patente" class="form-control border-input" readonly style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
-                                          <div class="col-sm-10" style=" padding-left: 0px; ">
-                                              <div class="form-group" style="margin-bottom: 5px;">
-                                                  <label>Rut Chofer</label>
-                                                  <input value="" id="rutchofer" readonly class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
-                                              </div>
-                                          </div>
-                                          <div class="col-sm-2" style=" padding-left: 0px; ">
-                                              <button type="button" onclick="CargaInformacionChofer()" id="modalpatent" href="#myModalchoferes" data-toggle="modal" data-target="#myModalchoferes" class="btn btn-info" style="bottom:0px;margin-top: 15px;"><i class="fa fa-search"></i></button>
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Nombre chofer</label>
-                                              <input value="" id="nombrechofer" class="form-control border-input" readonly style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
-                                          <div class="col-sm-10" style=" padding-left: 0px; ">
-                                              <div class="form-group" style="margin-bottom: 5px;">
-                                                  <label>Transporte</label>
-                                                  <input value="" id="ruttransporte" readonly class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
-                                              </div>
-                                          </div>
-                                          <div class="col-sm-2" style=" padding-left: 0px; ">
-                                              <button type="button" onclick="CargaInformacionTransporte()" id="modalpatent2" href="#myModaltransporte" data-toggle="modal" data-target="#myModaltransporte" class="btn btn-info" style="bottom:0px;margin-top: 15px;"><i class="fa fa-search"></i></button>
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Nombre transporte</label>
-                                              <input id="nombretransportista" value="" class="form-control border-input" readonly style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Tara</label>
-                                              <input value="" id="tara" class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Termografo</label>
-                                              <input value="" id="termografo" class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 0px;padding-right: 5px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Booking</label>
-                                              <input value="" id="booking" class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-6" style="padding-left: 5px;padding-right: 0px;">
-                                          <div class="form-group" style="margin-bottom: 5px;">
-                                              <label>Contenedor</label>
-                                              <input value="" id="contenedor" class="form-control border-input" style="padding-bottom: 3px;padding-top: 3px;height: 28px;" />
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label>Estado</label>
+                              <input value="" class="form-control border-input" readonly />
+                            </div>
                           </div>
-                      </div>
-                  </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label>Fecha salida</label>
+                              <div class="input-group date">
+                                <input class="form-control" id="fec_sal" value="" type="text">
+                                <span class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
-                  <div class="panel panel-primary setup-content" *ngIf="id==2">
-                    Pene pal que lee
-                  </div>
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label>Tipo transporte</label>
+                              <select id="selectTipoTransporte" class="form-control border-input">
+                                <option value=""></option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label>Rut chofer</label>
+                              <div class="input-group">
+                                <input class="form-control" value="" type="text">
+                                <span class="input-group-addon">
+                                  <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label>Tara</label>
+                              <input id="tara" class="form-control border-input" />
+                            </div>
+                          </div>
 
-                  <div class="panel panel-primary setup-content" *ngIf="id==3">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Schedule</h3>
-                    </div>
-                    <div class="panel-body">
-                      <div class="form-group">
-                        <label class="control-label">Company Name</label>
-                        <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label>Tipo vehiculo</label>
+                              <select id="selectTipoVehiculo" class="form-control border-input">
+                                <option></option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label>Nombre chofer</label>
+                              <input id="nombrechofer" class="form-control border-input" readonly />
+                            </div>
+                            <div class="form-group">
+                              <label>Termografo</label>
+                              <input class="form-control border-input" />
+                            </div>
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label>Patente camion</label>
+                              <input readonly class="form-control border-input" />
+                            </div>
+                            <div class="form-group">
+                              <label>Transporte</label>
+                              <div class="input-group">
+                                <input class="form-control" value="" type="text">
+                                <span class="input-group-addon">
+                                  <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label>Booking</label>
+                              <input class="form-control border-input" />
+                            </div>
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label>Patente carro</label>
+                              <input class="form-control border-input" readonly/>
+                            </div>
+                            <div class="form-group">
+                              <label>Nombre transporte</label>
+                              <input value="" class="form-control border-input" readonly/>
+                            </div>
+                            <div class="form-group">
+                              <label>Contenedor</label>
+                              <input class="form-control border-input" />
+                            </div>
+                            <button class="btn btn-primary nextBtn pull-right" type="button" (click)="setMenu(2)">Siguiente</button>
+                          </div>
+
+                        </div>
+
                       </div>
-                      <div class="form-group">
-                        <label class="control-label">Company Address</label>
-                        <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
-                      </div>
-                      <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
                     </div>
                   </div>
+
+                  <div *ngIf="id==2">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="ibox float-e-margins">
+                          <div class="ibox-title">
+                            <h5>Info. SAG</h5>
+                            <div class="ibox-tools">
+                              <a class="collapse-link">
+                                <!-- <i class="fa fa-chevron-up"></i> -->
+                              </a>
+                            </div>
+                          </div>
+                          <div class="ibox-content">
+                            <div class="row">
+
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Condicion</label>
+                                  <select id="selectCondicion" class="form-control border-input">
+                                    <option value=""></option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>N° planilla</label>
+                                  <input type="number" class="form-control border-input" />
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label>Tipo planilla</label>
+                                  <select class="form-control border-input">
+                                    <option value=""></option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-8">
+                                <div class="form-group">
+                                  <label>Producto SAG</label>
+                                  <select class="form-control border-input">
+                                    <option value=""></option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="ibox float-e-margins">
+                          <div class="ibox-title">
+                            <h5>Sellos</h5>
+                            <div class="ibox-tools">
+                              <a class="collapse-link">
+                                <!-- <i class="fa fa-chevron-up"></i> -->
+                              </a>
+                            </div>
+                          </div>
+                          <div class="ibox-content">
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label>Tipo sello</label>
+                                  <select id="selectTipoSello" class="form-control border-input">
+                                    <option value=""></option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label>Ubicacion sello</label>
+                                  <select class="form-control border-input">
+                                    <option value=""></option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label>Cant. sellos</label>
+                                  <input type="number" class="form-control border-input" />
+                                </div>
+                                <div class="form-group">
+                                  <label>N° sellos Nav.</label>
+                                  <input class="form-control border-input" />
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label>N° sellos Plan.</label>
+                                  <input type="number" class="form-control border-input" />
+                                </div>
+                                <div class="form-group">
+                                  <label>N° sellos USDA</label>
+                                  <input type="number" class="form-control border-input" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="ibox float-e-margins">
+                          <div class="ibox-title">
+                            <h5>Otros</h5>
+                            <div class="ibox-tools">
+                              <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="ibox-content">
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <div class="form-group">
+                                  <label>Jefe turno</label>
+                                  <select id="selectJefeTurno" class="form-control border-input">
+                                    <option value=""></option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label>Camarero</label>
+                                  <select id="selectCamarero" class="form-control border-input">
+                                    <option value=""></option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-sm-3">
+                                <div class="form-group">
+                                  <div class="col-sm-12">
+                                    <label>Origen Desp.</label>
+                                  </div>
+                                  <div class="col-sm-5">
+                                    <input type="radio" id="origensag" name="origen" value="SAG" class="form-control border-input" style="display:inline-block;height: 15px; width: 15px; "
+                                    />
+                                    <h5 style="display:inline-block;">SAG</h5>
+                                  </div>
+                                  <div class="col-sm-7">
+                                    <input type="radio" id="origendelegado" name="origen" value="DELEGADO" class="form-control border-input" style="display:inline-block; height: 15px; width: 15px; "
+                                    />
+                                    <h5 style="display:inline-block;">DELEGADO</h5>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label>Observaciones</label>
+                                  <input value="" id="observacion" class="form-control border-input" />
+                                </div>
+                              </div>
+                              <div class="col-sm-3">
+                                <div class="form-group">
+                                  <label>Despachador</label>
+                                  <input value="" id="despachador" class="form-control border-input" />
+                                </div>
+                                <div class="form-group">
+                                  <label>Deposito contenedor</label>
+                                  <select id="selectDepositoContenedor" class="form-control border-input">
+                                    <option value=""></option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-sm-3">
+                                <div class="form-group">
+                                  <label>Resp.</label>
+                                  <input value="" id="respuerto" class="form-control border-input" />
+                                </div>
+                                <div class="form-group">
+                                  <label>Total pallets</label>
+                                  <input type="number" value="" id="totalpalets" class="form-control border-input" />
+                                </div>
+                                <button class="btn btn-primary nextBtn pull-right" type="button" (click)="setMenu(3)">Guardar despacho</button>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- GUIAS -->
+                  <div *ngIf="id==3">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="ibox float-e-margins">
+                          <div class="ibox-title">
+                            <h5>Informacion de guía</h5>
+                            <div class="ibox-tools">
+                              <a class="collapse-link">
+                                <!-- <i class="fa fa-chevron-up"></i> -->
+                              </a>
+                            </div>
+                          </div>
+                          <div class="ibox-content">
+                            <div class="row">
+                              <div class="col-md-2">
+                                <div class="form-group">
+                                  <label>N° de guía</label>
+                                  <input class="form-control border-input" type="number" />
+                                </div>
+                              </div>
+                              <div class="col-md-2">
+                                <div class="form-group">
+                                  <label>N° instructivo</label>
+                                  <input class="form-control border-input" type="number" />
+                                </div>
+                              </div>
+                              <div class="col-md-5">
+                                <div class="form-group">
+                                  <label>Recibidor</label>
+                                  <input class="form-control border-input" />
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label>Fecha zarpa</label>
+                                  <input class="form-control border-input" type="datetime" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label>Exportadora</label>
+                                  <input class="form-control border-input" type="text" readonly/>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label>Bodega</label>
+                                  <input class="form-control border-input" type="text" />
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label>Cond. pallet</label>
+                                  <input class="form-control border-input" type="number" />
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label>Total pallets</label>
+                                  <input class="form-control border-input" type="number" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-8">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label>Nombre exportadora</label>
+                                      <input type="text" class="form-control border-input" />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label>Booking</label>
+                                      <input type="text" class="form-control border-input" />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label>Ag. Aduana</label>
+                                      <input type="text" class="form-control border-input" />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label>Puerto origen</label>
+                                      <input type="text" class="form-control border-input" />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label>Puerto destino</label>
+                                      <input type="text" class="form-control border-input" />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label class="control-label">Observaciones</label>
+                                  <textarea type="text" class="form-control border-input"></textarea>
+                                </div>
+                                <button class="btn btn-primary nextBtn pull-right" type="button">Guardar guía</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="ibox float-e-margins">
+                          <div class="ibox-title">
+                            <h5>Pallets</h5>
+                            <div class="ibox-tools">
+                              <a class="collapse-link">
+                                <!-- <i class="fa fa-chevron-up"></i> -->
+                              </a>
+                            </div>
+                          </div>
+                          <div class="ibox-content">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label>Agregar pallet</label>
+                                  <div class="input-group">
+                                    <input class="form-control" type="text">
+                                    <span class="input-group-addon">
+                                      <i class="fa fa-plus"></i>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div class="row">
+                              <div class="col-md-2" style="text-align:center;">
+                                <hr>
+                                <h4>Cantidad de Pallets</h4>
+                                <svg width="100" height="100" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="40" stroke="#006600" stroke-width="2" fill="#00cc00" />
+                                  <text font-size="36" fill="white" font-family="Verdana" text-anchor="middle" alignment-baseline="baseline" x="50" y="63">1</text>
+                                </svg>
+                                <hr>
+                              </div>
+                              <div class="col-md-10">
+                                <div class="table-responsive">
+                                  <table class="table table-condensed">
+                                    <thead>
+                                      <tr>
+                                        <th>Folio</th>
+                                        <th>Termografo</th>
+                                        <th>Fecha de Carga</th>
+                                        <th>N° Lote</th>
+                                        <th>Kilos</th>
+                                        <th>Cajas</th>
+                                        <th>Especie</th>
+                                        <th>Variedad</th>
+                                        <th>Envase</th>
+                                        <th>Calibre</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>F121856314</td>
+                                        <td>911091</td>
+                                        <td>4/4/2018 4:41:40</td>
+                                        <td>613</td>
+                                        <td>1320</td>
+                                        <td>1</td>
+                                        <td>Cebolla</td>
+                                        <td>Valenciana</td>
+                                        <td>400</td>
+                                        <td>2 (10)</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <div>
+                                    <label style="display:inline-block;">Total de cajas</label>
+                                    <input readonly type="number" class="form-control border-input" style="width:100px;" />
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
 
                   <div class="panel panel-primary setup-content" *ngIf="id==4">
                     <div class="panel-heading">

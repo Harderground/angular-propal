@@ -92,7 +92,7 @@
                                                                     <td class="text-center">{{camion.ord_carga_descarga}}</td>
                                                                     <td>{{camion.nom_agTransp}}</td>
                                                                     <td>
-                                                                        <button routerLink="/guia-despacho" type="button" class="btn btn-primary btn-sm">
+                                                                        <button (click)="setCamion(camion.num_regPort)" type="button" class="btn btn-primary btn-sm">
                                                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                                         </button>
                                                                     </td>

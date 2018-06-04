@@ -1,4 +1,4 @@
-<div class="wrapper wrapper-content animated fadeInRight">
+<div class="wrapper wrapper-content animated">
   <div class="row">
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="ibox-content">
-          <div class="gray-bg wrapper wrapper-content animated fadeInRight" id="Abajo">
+          <div class="gray-bg wrapper wrapper-content " id="Abajo">
             <div class="row">
               <!-- ay -->
               <div class="container">
@@ -64,7 +64,7 @@
                   </div>
                 </div>
 
-                <form role="form">
+                <div role="form">
                   <div *ngIf="id==1">
                     <div class="ibox float-e-margins">
                       <div class="ibox-title">
@@ -80,7 +80,7 @@
                           <div class="col-md-4">
                             <div class="form-group">
                               <label>Numero despacho</label>
-                              <input value="" id="correlativo" class="form-control border-input" readonly />
+                              <input value="{{datosCamion.num_regPort}}" id="correlativo" class="form-control border-input" readonly />
                             </div>
                           </div>
                           <div class="col-md-4">
@@ -93,7 +93,7 @@
                             <div class="form-group">
                               <label>Fecha salida</label>
                               <div class="input-group date">
-                                <input class="form-control" id="fec_sal" value="" type="text">
+                                <input class="form-control" id="fec_sal" value="{{fechaHoy}}" type="text">
                                 <span class="input-group-addon">
                                   <i class="fa fa-calendar"></i>
                                 </span>
@@ -106,16 +106,16 @@
                           <div class="col-md-3">
                             <div class="form-group">
                               <label>Tipo transporte</label>
-                              <select id="selectTipoTransporte" class="form-control border-input">
-                                <option value=""></option>
+                              <select  id="selectTipoTransporte" class="form-control border-input">
+                                <option  *ngFor="let transporte of listaTipoTransporte" value="{{transporte.Cod_TipTransSAG}}">{{transporte.Nom_TipTransSAG}}</option>
                               </select>
                             </div>
                             <div class="form-group">
                               <label>Rut chofer</label>
                               <div class="input-group">
-                                <input class="form-control" value="" type="text">
-                                <span class="input-group-addon">
-                                  <i class="fa fa-search" aria-hidden="true"></i>
+                                <input class="form-control" value="{{datosChofer.rut_chofer}}"  type="text" readonly>
+                                <span (click)="obtenerChoferes()" class="input-group-addon btn-primary" data-toggle="modal" data-target="#modalChofer">
+                                  <i class="fa fa-search" aria-hidden="true" ></i>
                                 </span>
                               </div>
                             </div>
@@ -129,12 +129,12 @@
                             <div class="form-group">
                               <label>Tipo vehiculo</label>
                               <select id="selectTipoVehiculo" class="form-control border-input">
-                                <option></option>
+                                <option *ngFor="let vehiculo of listaTipoVehiculo" value="{{vehiculo.cod_tipoVehiculo}}">{{vehiculo.nom_tipoVehiculo}}</option>
                               </select>
                             </div>
                             <div class="form-group">
                               <label>Nombre chofer</label>
-                              <input id="nombrechofer" class="form-control border-input" readonly />
+                              <input value="{{datosChofer.nom_chofer}}" id="nombrechofer" class="form-control border-input" readonly />
                             </div>
                             <div class="form-group">
                               <label>Termografo</label>
@@ -145,17 +145,20 @@
                           <div class="col-md-3">
                             <div class="form-group">
                               <label>Patente camion</label>
-                              <input readonly class="form-control border-input" />
+                              <input value="{{datosCamion.patente}}" readonly class="form-control border-input" />
                             </div>
                             <div class="form-group">
                               <label>Transporte</label>
                               <div class="input-group">
-                                <input class="form-control" value="" type="text">
-                                <span class="input-group-addon">
-                                  <i class="fa fa-search" aria-hidden="true"></i>
+                                <input class="form-control" value="{{datosTransporte.rut_agTransp}}" type="text" readonly>
+                                <span (click)="obtenerTransportes()" class="input-group-addon btn-primary" data-toggle="modal" data-target="#modalTransporte">
+                                  <i class="fa fa-search" aria-hidden="true" ></i>
                                 </span>
                               </div>
                             </div>
+
+
+
                             <div class="form-group">
                               <label>Booking</label>
                               <input class="form-control border-input" />
@@ -165,15 +168,15 @@
                           <div class="col-md-3">
                             <div class="form-group">
                               <label>Patente carro</label>
-                              <input class="form-control border-input" readonly/>
+                              <input value="{{datosCamion.patente_carro}}" class="form-control border-input" readonly/>
                             </div>
                             <div class="form-group">
                               <label>Nombre transporte</label>
-                              <input value="" class="form-control border-input" readonly/>
+                              <input value="{{datosTransporte.nom_agTransp}}" class="form-control border-input" readonly/>
                             </div>
                             <div class="form-group">
                               <label>Contenedor</label>
-                              <input class="form-control border-input" />
+                              <input value="{{datosCamion.num_contenedor}}" class="form-control border-input" />
                             </div>
                             <button class="btn btn-primary nextBtn pull-right" type="button" (click)="setMenu(2)">Siguiente</button>
                           </div>
@@ -584,7 +587,7 @@
                       <button class="btn btn-success pull-right" type="submit">Finish!</button>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
               <!-- ay -->
 
@@ -595,3 +598,101 @@
     </div>
   </div>
 </div>
+
+
+
+
+  
+  <!-- Modal -->
+  <div *ngIf="modalChofer==true"  class="modal fade" id="modalChofer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header btn-primary">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Lista Choferes</h4>
+        </div>
+        <div class="modal-body">
+          <input (keyup)="filtroChofer($event)" type="text" class="form-control" placeholder="Buscar...">
+            <table class="table table-striped" id="table-camion">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Rut</th>
+                        <th>Fono</th>
+                        <th>Seleccionar</th>
+                    </tr>
+                </thead>
+                <tbody id="">
+                    <tr *ngFor="let chofer of listaChoferes | paginate: { itemsPerPage: 10, currentPage: chofer }">
+                        <td>{{chofer.nom_chofer}}</td>
+                        <td>{{chofer.rut_chofer}}</td>
+                        <td>{{chofer.fono}}</td>
+                        <td class="text-center">
+                            <button (click)="setChofer(chofer)" type="button" class="btn btn-primary btn-sm" data-dismiss="modal">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="listaChoferes.length ==0" class="text-center">
+                <i class="fa fa-spin fa-spinner"></i>
+              </div>
+            <div *ngIf="listaChoferes.length > 9 " class="text-center mt-3">
+                <pagination-controls previousLabel="" nextLabel="" (pageChange)="chofer = $event"></pagination-controls>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div *ngIf="modalTransporte==true" class="modal fade" id="modalTransporte" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Lista Transportes</h4>
+        </div>
+        <div class="modal-body">
+            <input (keyup)="filtroTransporte($event)" type="text" class="form-control" placeholder="Buscar...">
+            <table class="table table-striped" id="table-camion">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Rut</th>
+                        <th>Fono</th>
+                        <th>Seleccionar</th>
+                    </tr>
+                </thead>
+                <tbody id="">
+                    <tr *ngFor="let transporte of listaTransporte | paginate: { itemsPerPage: 10, currentPage: transporte }">
+                        <td>{{transporte.nom_agTransp}}</td>
+                        <td>{{transporte.rut_agTransp}}</td>
+                        <td>{{transporte.fono}}</td>
+                        <td class="text-center">
+                            <button (click)="setTransporte(transporte)" type="button" class="btn btn-primary btn-sm" data-dismiss="modal">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="listaTransporte.length ==0" class="text-center">
+              <i class="fa fa-spin fa-spinner"></i>
+            </div>
+            <div *ngIf="listaChoferes.length > 9 " class="text-center mt-3">
+                <pagination-controls previousLabel="" nextLabel="" (pageChange)="transporte = $event"></pagination-controls>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger " data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

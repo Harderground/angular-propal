@@ -66,16 +66,11 @@
 
                 <div role="form">
                   <div *ngIf="id==1">
-                    <div class="ibox float-e-margins">
-                      <div class="ibox-title">
-                        <h5>Transporte</h5>
-                        <div class="ibox-tools">
-                          <a class="collapse-link">
-                            <!-- <i class="fa fa-chevron-up"></i> -->
-                          </a>
-                        </div>
+                    <div class="panel panel-primary setup-content">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Transporte</h3>
                       </div>
-                      <div class="ibox-content">
+                      <div class="panel-body">
                         <div class="row">
                           <div class="col-md-4">
                             <div class="form-group">
@@ -190,16 +185,11 @@
                   <div *ngIf="id==2">
                     <div class="row">
                       <div class="col-md-6">
-                        <div class="ibox float-e-margins">
-                          <div class="ibox-title">
-                            <h5>Info. SAG</h5>
-                            <div class="ibox-tools">
-                              <a class="collapse-link">
-                                <!-- <i class="fa fa-chevron-up"></i> -->
-                              </a>
-                            </div>
+                        <div class="panel panel-primary setup-content">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Info. SAG</h3>
                           </div>
-                          <div class="ibox-content">
+                          <div class="panel-body">
                             <div class="row">
 
                               <div class="col-md-6">
@@ -240,16 +230,11 @@
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="ibox float-e-margins">
-                          <div class="ibox-title">
-                            <h5>Sellos</h5>
-                            <div class="ibox-tools">
-                              <a class="collapse-link">
-                                <!-- <i class="fa fa-chevron-up"></i> -->
-                              </a>
-                            </div>
+                        <div class="panel panel-primary setup-content">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Sellos</h3>
                           </div>
-                          <div class="ibox-content">
+                          <div class="panel-body">
                             <div class="row">
                               <div class="col-md-4">
                                 <div class="form-group">
@@ -293,16 +278,12 @@
 
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="ibox float-e-margins">
-                          <div class="ibox-title">
-                            <h5>Otros</h5>
-                            <div class="ibox-tools">
-                              <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                              </a>
-                            </div>
+                        <div class="panel panel-primary setup-content">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Otros</h3>
+
                           </div>
-                          <div class="ibox-content">
+                          <div class="panel-body">
                             <div class="row">
                               <div class="col-sm-3">
                                 <div class="form-group">
@@ -373,16 +354,12 @@
                   <div *ngIf="id==3">
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="ibox float-e-margins">
-                          <div class="ibox-title">
-                            <h5>Informacion de guía</h5>
-                            <div class="ibox-tools">
-                              <a class="collapse-link">
-                                <!-- <i class="fa fa-chevron-up"></i> -->
-                              </a>
-                            </div>
+                        <div class="panel panel-primary setup-content">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Informacion de guía</h3>
+            
                           </div>
-                          <div class="ibox-content">
+                          <div class="panel-body">
                             <div class="row">
                               <div class="col-md-2">
                                 <div class="form-group">
@@ -486,16 +463,12 @@
                     </div>
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="ibox float-e-margins">
-                          <div class="ibox-title">
-                            <h5>Pallets</h5>
-                            <div class="ibox-tools">
-                              <a class="collapse-link">
-                                <!-- <i class="fa fa-chevron-up"></i> -->
-                              </a>
-                            </div>
+                        <div class="panel panel-primary setup-content">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Pallets</h3>
+                          
                           </div>
-                          <div class="ibox-content">
+                          <div class="panel-body">
                             <div class="row">
                               <div class="col-md-12">
                                 <div class="form-group">
@@ -654,7 +627,7 @@
   <div *ngIf="modalTransporte==true" class="modal fade" id="modalTransporte" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header btn-primary">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Lista Transportes</h4>
         </div>
@@ -682,10 +655,10 @@
                     </tr>
                 </tbody>
             </table>
-            <div *ngIf="listaTransporte.length ==0" class="text-center">
+            <div *ngIf="listaTransporte.length == 0" class="text-center">
               <i class="fa fa-spin fa-spinner"></i>
             </div>
-            <div *ngIf="listaChoferes.length > 9 " class="text-center mt-3">
+            <div *ngIf="listaTransporte.length > 9 " class="text-center mt-3">
                 <pagination-controls previousLabel="" nextLabel="" (pageChange)="transporte = $event"></pagination-controls>
             </div>
         </div>
